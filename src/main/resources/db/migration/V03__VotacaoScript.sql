@@ -6,7 +6,8 @@ CREATE TABLE public.votacao
     id_associado             BIGINT         NOT NULL,
     flag_votou_sim  BOOLEAN,
     -- EntidadeAuditavel.class
-    dt_movimento               TIMESTAMP      NOT NULL DEFAULT now(),
+    dt_criacao      TIMESTAMP    NOT NULL DEFAULT now(),
+    dt_alteracao    TIMESTAMP,
     CONSTRAINT votacao_pk PRIMARY KEY (id),
     CONSTRAINT votacao_pauta_fk FOREIGN KEY (id_pauta)
         REFERENCES public.pauta (id) MATCH SIMPLE

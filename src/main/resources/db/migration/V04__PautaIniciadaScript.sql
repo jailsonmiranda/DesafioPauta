@@ -1,0 +1,1 @@
+ALTER TABLE public.pauta ADD COLUMN pauta_iniciada BOOLEAN ;
