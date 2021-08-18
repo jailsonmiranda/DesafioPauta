@@ -19,6 +19,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @Log
@@ -38,12 +43,33 @@ public class VotacaoResource {
     public PautaService pautaService;
 
     @PostMapping
-    public ResponseEntity<Votacao> votoAssociado(@RequestBody Votacao votacao, HttpServletResponse response){
+    public ResponseEntity<Votacao> votoAssociado(@RequestBody Votacao votacao, HttpServletResponse response) throws ParseException {
         //Valida se votação esta encerrada por tempo:
         Pauta pauta = pautaRepository.findById(votacao.getPauta().getId()).get();
-       // if (pauta.getDtCriacao().format() .equals(false)) {
-       //     throw new SessaoParaVotoEncerradaException("Sessão de votação fechada por tempo excedido! Pauta: " + pauta.getId());
-        //}
+        //HH converts hour in 24 hours format (0-23), day calculation
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        Date d1 = null;
+        Date d2 = null;
+
+        d1 = format.parse(pauta.getDtCriacao().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss")));
+        d2 = format.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss")));
+
+        //in milliseconds
+        long diff = d2.getTime() - d1.getTime();
+
+        long diffSeconds = diff / 1000 % 60;
+        long diffMinutes = diff / (60 * 1000) % 60;
+        long diffHours = diff / (60 * 60 * 1000) % 24;
+        long diffDays = diff / (24 * 60 * 60 * 1000);
+
+        System.out.print(diffDays + " days, ");
+        System.out.print(diffHours + " hours, ");
+        System.out.print(diffMinutes + " minutes, ");
+        System.out.print(diffSeconds + " seconds.");
+
+        if ( diffMinutes > 1 || diffHours > 1 || diffDays > 1 ) {
+            throw new  SessaoParaVotoEncerradaException("Sessão de votação fechada por tempo excedido! Pauta: " + pauta.getId());
+        }
 
         //Valida se votação esta encerrada ou aberta:
         if (pauta.getPauta_iniciada().equals(false) || pauta.getPauta_fechada().equals(true)) {

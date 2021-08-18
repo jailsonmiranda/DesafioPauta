@@ -38,6 +38,16 @@ localhost:8080/pauta/iniciarSecao/1
     "flag_votou_sim" : false
 }
 
+###Votação já encerrada ao votar:
+exemplo retorno 
+{
+    "timestamp": 1629310019502,
+    "status": 405,
+    "error": "Sessão encerrada",
+    "message": "Sessão de votação fechada por tempo excedido! Pauta: 1",
+    "path": "/voto/"
+}
+                
 ###Put fechar a seção da pauta:
 localhost:8080/pauta/fecharSecao/1
 
