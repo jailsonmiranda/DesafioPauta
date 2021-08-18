@@ -26,5 +26,13 @@ public class PautaService {
         return  pautaRepository.save(pauta);
     }
 
+    @Transactional
+    public Pauta atualizarContagemVotos(Long pautaId, Long votoSim, Long votoNao) {
+        Pauta pauta = pautaRepository.getById(pautaId);
+        pauta.setTotal_sim(votoSim);
+        pauta.setTotal_nao(votoNao);
+        return  pautaRepository.save(pauta);
+    }
+
 
 }
