@@ -1,7 +1,19 @@
 # DesafioPauta
- 
+ Foi realizado de uma forma que fique rápida e prática as
+ requisições foram feitas se baseando por vários conceitos.
 
+#Versionamento da API
+Útilizado versionamento atraves do pom alterando campo
+<version>0.0.2-SNAPSHOT</version>
 
+###Recursos utilizados:
+Java 11
+Maven
+JPA
+Slf4j
+Lombok
+Postgresql- senha definada no propert como postgres caso nescessite alterar.
+entre outros
 
 ##ORDEM E REQUEST PARA TESTE:
 

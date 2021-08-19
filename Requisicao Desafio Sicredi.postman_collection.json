@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "beb06c1e-7f78-43cd-b07b-b5f33a7c1e2d",
+		"name": "Requisicao Desafio Sicredi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post Criar pauta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"Votação código 321 - aumento de taxa administrativa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pauta/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Criar associado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"Votação código 321 - aumento de taxa administrativa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pauta/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post realizar voto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_pauta\":{\r\n        \"id\":1\r\n    },\r\n\r\n    \"id_associado\":{\r\n        \"id\":1\r\n    },\r\n    \r\n    \"flag_votou_sim\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/voto/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voto",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post contabilizar votos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/voto/contabiliza/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voto",
+						"contabiliza",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put iniciar a seção da pauta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pauta_iniciada\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pauta/iniciarSecao/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta",
+						"iniciarSecao",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put fechar a seção da pauta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pauta_iniciada\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pauta/fecharSecao/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta",
+						"fecharSecao",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://user-info.herokuapp.com/users/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://user-info.herokuapp.com/users/08688683964",
+					"protocol": "https",
+					"host": [
+						"user-info",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"08688683964"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
